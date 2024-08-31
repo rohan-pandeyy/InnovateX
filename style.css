@@ -35,3 +35,56 @@ body {
 .image-container img.active {
     opacity: 1; /* Show the active image */
 }
+
+header {
+    display: flex;
+    justify-content: space-between; /* Space between logo and nav */
+    align-items: center;
+    height: 100px;
+    padding: 0 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.6); /* Optional: Add background color */
+}
+
+.navbar-logo {
+    margin-right: 100px; /* Pushes the logo to the left */
+}
+
+.navbar-logo a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: white; /* Adjusted to match the nav link color */
+}
+
+header nav {
+    display: flex;
+    gap: 50px;
+}
+
+header nav a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.3s;
+    color: white;
+}
+
+header nav a.active,
+header nav a:hover {
+    text-shadow: 0 0 5px rgba(0, 247, 255, 1);
+}
+
+header nav:hover > a:not(:hover):not(.active) {
+    text-shadow: none;
+}
+
+.introduction {
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 100px;
+    height: 200vh;
+}
