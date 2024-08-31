@@ -34,34 +34,36 @@ body {
 .image-container img.active {
     opacity: 1;
 }
-
 header {
     display: flex;
-    justify-content: space-between; /* Space between logo and nav */
+    justify-content: space-between;
     align-items: center;
     height: 100px;
     padding: 0 5%;
     position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.6); /* Optional: Add background color */
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .navbar-logo {
-    margin-right: 100px; /* Pushes the logo to the left */
+    flex: 1;  /* This allows the logo to take up available space */
 }
 
 .navbar-logo a {
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
-    color: white; /* Adjusted to match the nav link color */
+    color: white;
 }
 
 header nav {
     display: flex;
-    gap: 50px;
+    justify-content: flex-end;  /* Aligns nav items to the right */
+    flex: 2;  /* This gives the nav more space than the logo */
+    gap: 30px;  /* Reduced gap between nav items */
 }
 
 header nav a {
@@ -70,6 +72,7 @@ header nav a {
     font-weight: 600;
     transition: 0.3s;
     color: white;
+    padding: 10px 15px;  /* Added padding to increase clickable area */
 }
 
 header nav a.active,
@@ -79,11 +82,4 @@ header nav a:hover {
 
 header nav:hover > a:not(:hover):not(.active) {
     text-shadow: none;
-}
-
-.introduction {
-    text-align: center;
-    margin-top: 200px;
-    margin-bottom: 100px;
-    height: 200vh;
 }

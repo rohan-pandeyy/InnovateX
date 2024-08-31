@@ -1,15 +1,15 @@
 const imageContainer = document.querySelector('.image-container');
-const totalImages = 40; // Replace with your image count
+const totalImages = 40;
 
 // Create and append images
 for (let i = 1; i <= totalImages; i++) {
   const img = document.createElement('img');
-  img.src = `images/${i}.png`; // Update with your image paths
+  img.src = `images/00${i}.png`;
   imageContainer.appendChild(img);
 }
 
 const images = document.querySelectorAll('.image-container img');
-let currentImageIndex = 0;
+let currentImageIndex = 0;  
 images[currentImageIndex].classList.add('active');
 
 // Calculate the total scrollable height
