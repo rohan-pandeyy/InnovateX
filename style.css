@@ -1,6 +1,6 @@
 body {
     margin: 0; /* Remove default body margins */
-    overflow: hidden; /* Prevent scrollbars */
+    overflow-x: hidden; /* Prevent scrollbars */
 }
 
 .background-image {
@@ -17,23 +17,22 @@ body {
   
 .image-container {
     width: 100vw; 
-    height: 100vh;
+    height: 200vh;
     overflow: hidden; /* Hide images that go beyond the container */
 }
 
 .image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure images cover the entire container */
-    position: absolute; /* Allow image positioning for transitions */
+    position: fixed;
     top: 0;
     left: 0;
-    opacity: 0; /* Initially hide all images */
-    transition: opacity 0.5s ease-in-out; /* Smooth opacity transition */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
 }
-
+  
 .image-container img.active {
-    opacity: 1; /* Show the active image */
+    opacity: 1;
 }
 
 header {
