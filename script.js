@@ -23,6 +23,57 @@ const getScrollHeight = () => {
   ) - window.innerHeight;
 };
 
+let lastKnownScrollPosition = 0;
+let ticking = false;
+let secondSignVisible = false;
+
+function handleScroll(scrollPos) {
+  const firstSign = document.getElementById('hanging-sign');
+  const secondSign = document.getElementById('hanging-sign-2');
+  const triggerPosition = 300;
+  const secondSignHidePosition = 300;
+
+  // Handle visibility for the first sign
+  if (scrollPos > triggerPosition) {
+    firstSign.classList.remove('hidden');
+    firstSign.classList.add('visible');
+  } else {
+    firstSign.classList.remove('visible');
+    firstSign.classList.add('hidden');
+  }
+
+  // Handle visibility for the second sign
+  if (secondSignVisible) {
+    if (scrollPos <= secondSignHidePosition) {
+      secondSign.classList.remove('visible');
+      secondSign.classList.add('hidden');
+      secondSignVisible = false;
+    }
+  }
+}
+
+// Event listener for the first sign
+document.getElementById('hanging-sign').addEventListener('click', function() {
+  const secondSign = document.getElementById('hanging-sign-2');
+  secondSign.classList.remove('hidden');
+  secondSign.classList.add('visible');
+  secondSignVisible = true;
+});
+
+// Existing scroll event listener
+window.addEventListener('scroll', function(e) {
+  lastKnownScrollPosition = window.scrollY;
+
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      handleScroll(lastKnownScrollPosition);
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+});
+
 // Scroll event listener
 window.addEventListener('scroll', () => {
   const scrollPosition = window.scrollY;
@@ -41,6 +92,15 @@ window.addEventListener('scroll', () => {
     images[imageIndex].classList.add('active');
     currentImageIndex = imageIndex;
   }
+
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      handleScroll(scrollPosition);
+      ticking = false;
+    });
+
+    ticking = true;
+  }
 });
 
 // Navbar toggle functionality
@@ -50,4 +110,12 @@ const navbar = document.querySelector('.navbar');
 navbarToggle?.addEventListener('click', () => {
   navbar?.classList.toggle('active');
   navbarToggle.classList.toggle('active');
+});
+
+// Auto-typing effect
+var typed = new Typed(".auto-type", {
+  strings : ["Talk to RailMitra", "Raise a Complaint"],
+  typeSpeed : 150,
+  backSpeed : 50,
+  loop : true
 });

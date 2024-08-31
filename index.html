@@ -3,21 +3,49 @@
 <head>
   <title>YatraBuddy</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    ::-webkit-scrollbar {
+      width: 13px;
+    }
+
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px rgb(245, 52, 52);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgb(221, 133, 133);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgb(245, 99, 99);
+    }
+  </style>
 </head>
 <header>
   <div class="navbar-logo">
     <a href="#">YatraBuddy</a>
   </div>
   <nav>
-    <a href="#home" class="active">Home</a>
-    <a href="#about">About</a>
-    <a href="#" id="teamButton">Team</a>
-    <a href="#">Contact</a>
+    <a href="#about">Raise a Complaint</a>
+    <a href="#" id="teamButton">Get Recommendations</a>
+    <a href="#">Feedback</a>
   </nav>
 </header>
 <body>
   <div class="background-image"></div>
   <div class="image-container"></div>
+
+  <div id="hanging-sign" class="hidden">
+    <h1><span class="auto-type"></span></h1>
+  </div>
+  <div id="hanging-sign-2" class="hidden">
+    <h1>Another Sign</h1>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
   <script src="script.js"></script>
 </body>
 </html>

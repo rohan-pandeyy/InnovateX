@@ -83,3 +83,67 @@ header nav a:hover {
 header nav:hover > a:not(:hover):not(.active) {
     text-shadow: none;
 }
+
+#hanging-sign {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('./images/board.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 0.5s ease-out, opacity 0.5s ease-out;
+    z-index: 1000;
+    opacity: 0;
+    top: -100px;
+    cursor: pointer;
+}
+
+#hanging-sign.visible {
+    top: 0;
+    opacity: 1;
+}
+
+#hanging-sign.hidden {
+    top: -100px;
+    opacity: 0;
+}
+
+#hanging-sign h1 {
+    color: #000000;
+    font-size: 24px;
+    text-align: center;
+    padding: 20px;
+    margin-top: 130px;
+}
+
+#hanging-sign-2 {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('./images/board-dropdown.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 600px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 0.5s ease-out, opacity 0.5s ease-out;
+    z-index: 999;
+    opacity: 0;
+    top: 200px; /* Position it below the first sign (height of the first sign) */
+}
+
+#hanging-sign-2.visible {
+    opacity: 1;
+}
+
+#hanging-sign-2.hidden {
+    top: 200px;
+    opacity: 0;
+}
