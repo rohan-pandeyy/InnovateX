@@ -1,5 +1,5 @@
 const imageContainer = document.querySelector('.image-container');
-const totalImages = 40;
+const totalImages = 80;
 
 // Create and append images
 for (let i = 1; i <= totalImages; i++) {
@@ -31,10 +31,21 @@ function handleScroll(scrollPos) {
   const firstSign = document.getElementById('hanging-sign');
   const secondSign = document.getElementById('hanging-sign-2');
   const triggerPosition = 300;
+  const hidePosition = 800; // When both signs should disappear
   const secondSignHidePosition = 300;
 
+  // Hide both signs if scroll position is greater than or equal to hidePosition
+  if (scrollPos >= hidePosition) {
+    firstSign.classList.remove('visible');
+    firstSign.classList.add('hidden');
+    secondSign.classList.remove('visible');
+    secondSign.classList.add('hidden');
+    secondSignVisible = false;
+    return; // Exit the function early
+  }
+
   // Handle visibility for the first sign
-  if (scrollPos > triggerPosition) {
+  if (scrollPos > triggerPosition && scrollPos < hidePosition) {
     firstSign.classList.remove('hidden');
     firstSign.classList.add('visible');
   } else {
@@ -48,6 +59,9 @@ function handleScroll(scrollPos) {
       secondSign.classList.remove('visible');
       secondSign.classList.add('hidden');
       secondSignVisible = false;
+    } else if (scrollPos < hidePosition) {
+      secondSign.classList.remove('hidden');
+      secondSign.classList.add('visible');
     }
   }
 }

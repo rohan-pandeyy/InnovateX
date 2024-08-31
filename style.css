@@ -17,7 +17,7 @@ body {
   
 .image-container {
     width: 100vw; 
-    height: 200vh;
+    height: 500vh;
     overflow: hidden; /* Hide images that go beyond the container */
 }
 
