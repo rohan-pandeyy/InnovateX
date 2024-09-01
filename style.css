@@ -84,7 +84,7 @@ header nav:hover > a:not(:hover):not(.active) {
     text-shadow: none;
 }
 
-#hanging-sign {
+#complaint-bot {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
@@ -103,17 +103,17 @@ header nav:hover > a:not(:hover):not(.active) {
     cursor: pointer;
 }
 
-#hanging-sign.visible {
+#complaint-bot.visible {
     top: 0;
     opacity: 1;
 }
 
-#hanging-sign.hidden {
+#complaint-bot.hidden {
     top: -100px;
     opacity: 0;
 }
 
-#hanging-sign h1 {
+#complaint-bot h1 {
     color: #000000;
     font-size: 24px;
     text-align: center;
@@ -121,7 +121,7 @@ header nav:hover > a:not(:hover):not(.active) {
     margin-top: 130px;
 }
 
-#hanging-sign-2 {
+#complaint-dropdown {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
@@ -139,11 +139,76 @@ header nav:hover > a:not(:hover):not(.active) {
     top: 200px; /* Position it below the first sign (height of the first sign) */
 }
 
-#hanging-sign-2.visible {
+#complaint-dropdown.visible {
     opacity: 1;
 }
 
-#hanging-sign-2.hidden {
+#complaint-dropdown.hidden {
+    top: 200px;
+    opacity: 0;
+}
+
+
+#recommendation-bot {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('./images/board.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 0.5s ease-out, opacity 0.5s ease-out;
+    z-index: 1000;
+    opacity: 0;
+    top: -100px;
+    cursor: pointer;
+}
+
+#recommendation-bot.visible {
+    top: 0;
+    opacity: 1;
+}
+
+#recommendation-bot.hidden {
+    top: -100px;
+    opacity: 0;
+}
+
+#recommendation-bot h1 {
+    color: #000000;
+    font-size: 24px;
+    text-align: center;
+    padding: 20px;
+    margin-top: 130px;
+}
+
+#recommendation-dropdown {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('./images/board-dropdown.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 600px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 0.5s ease-out, opacity 0.5s ease-out;
+    z-index: 999;
+    opacity: 0;
+    top: 200px; /* Position it below the first sign (height of the first sign) */
+}
+
+#recommendation-dropdown.visible {
+    opacity: 1;
+}
+
+#recommendation-dropdown.hidden {
     top: 200px;
     opacity: 0;
 }

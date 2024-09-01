@@ -25,71 +25,99 @@ const getScrollHeight = () => {
 
 let lastKnownScrollPosition = 0;
 let ticking = false;
-let secondSignVisible = false;
+let complaintDropdownVisible = false;
+let recommendationDropdownVisible = false;
 
 function handleScroll(scrollPos) {
-  const firstSign = document.getElementById('hanging-sign');
-  const secondSign = document.getElementById('hanging-sign-2');
-  const triggerPosition = 300;
-  const hidePosition = 800; // When both signs should disappear
-  const secondSignHidePosition = 300;
+  const complaintBot = document.getElementById('complaint-bot');
+  const complaintDropdown = document.getElementById('complaint-dropdown');
+  const recommendationBot = document.getElementById('recommendation-bot');
+  const recommendationDropdown = document.getElementById('recommendation-dropdown');
 
-  // Hide both signs if scroll position is greater than or equal to hidePosition
-  if (scrollPos >= hidePosition) {
-    firstSign.classList.remove('visible');
-    firstSign.classList.add('hidden');
-    secondSign.classList.remove('visible');
-    secondSign.classList.add('hidden');
-    secondSignVisible = false;
-    return; // Exit the function early
-  }
+  const triggerPosition1 = 300;  // When the first sign appears
+  const triggerPosition2 = 1300; // When the second sign appears
+  const hidePosition1 = 800;     // When first sign should disappear
+  const hidePosition2 = 1900;    // When second sign should disappear
+  const complaintDropdownHidePosition = 300;
+  const recommendationDropdownHidePosition = 1000;
 
-  // Handle visibility for the first sign
-  if (scrollPos > triggerPosition && scrollPos < hidePosition) {
-    firstSign.classList.remove('hidden');
-    firstSign.classList.add('visible');
-  } else {
-    firstSign.classList.remove('visible');
-    firstSign.classList.add('hidden');
-  }
-
-  // Handle visibility for the second sign
-  if (secondSignVisible) {
-    if (scrollPos <= secondSignHidePosition) {
-      secondSign.classList.remove('visible');
-      secondSign.classList.add('hidden');
-      secondSignVisible = false;
-    } else if (scrollPos < hidePosition) {
-      secondSign.classList.remove('hidden');
-      secondSign.classList.add('visible');
+  // Handle visibility for complaint signs
+  if (scrollPos >= hidePosition1) {
+    complaintBot.classList.remove('visible');
+    complaintBot.classList.add('hidden');
+    complaintDropdown.classList.remove('visible');
+    complaintDropdown.classList.add('hidden');
+    complaintDropdownVisible = false;
+  } else if (scrollPos > triggerPosition1) {
+    complaintBot.classList.remove('hidden');
+    complaintBot.classList.add('visible');
+    if (complaintDropdownVisible && scrollPos > complaintDropdownHidePosition) {
+      complaintDropdown.classList.remove('hidden');
+      complaintDropdown.classList.add('visible');
     }
+  } else {
+    complaintBot.classList.remove('visible');
+    complaintBot.classList.add('hidden');
+    complaintDropdown.classList.remove('visible');
+    complaintDropdown.classList.add('hidden');
+    complaintDropdownVisible = false;
+  }
+
+  // Handle visibility for recommendation signs
+  if (scrollPos >= hidePosition2) {
+    recommendationBot.classList.remove('visible');
+    recommendationBot.classList.add('hidden');
+    recommendationDropdown.classList.remove('visible');
+    recommendationDropdown.classList.add('hidden');
+    recommendationDropdownVisible = false;
+  } else if (scrollPos > triggerPosition2) {
+    recommendationBot.classList.remove('hidden');
+    recommendationBot.classList.add('visible');
+    if (recommendationDropdownVisible && scrollPos > recommendationDropdownHidePosition) {
+      recommendationDropdown.classList.remove('hidden');
+      recommendationDropdown.classList.add('visible');
+    }
+  } else {
+    recommendationBot.classList.remove('visible');
+    recommendationBot.classList.add('hidden');
+    recommendationDropdown.classList.remove('visible');
+    recommendationDropdown.classList.add('hidden');
+    recommendationDropdownVisible = false;
   }
 }
 
-// Event listener for the first sign
-document.getElementById('hanging-sign').addEventListener('click', function() {
-  const secondSign = document.getElementById('hanging-sign-2');
-  secondSign.classList.remove('hidden');
-  secondSign.classList.add('visible');
-  secondSignVisible = true;
-});
+// Event listener for complaint-bot to toggle complaint-dropdown
+document.getElementById('complaint-bot').addEventListener('click', function() {
+  const complaintDropdown = document.getElementById('complaint-dropdown');
 
-// Existing scroll event listener
-window.addEventListener('scroll', function(e) {
-  lastKnownScrollPosition = window.scrollY;
-
-  if (!ticking) {
-    window.requestAnimationFrame(function() {
-      handleScroll(lastKnownScrollPosition);
-      ticking = false;
-    });
-
-    ticking = true;
+  if (complaintDropdownVisible) {
+    complaintDropdown.classList.remove('visible');
+    complaintDropdown.classList.add('hidden');
+    complaintDropdownVisible = false;
+  } else {
+    complaintDropdown.classList.remove('hidden');
+    complaintDropdown.classList.add('visible');
+    complaintDropdownVisible = true;
   }
 });
 
-// Scroll event listener
-window.addEventListener('scroll', () => {
+// Event listener for recommendation-bot to toggle recommendation-dropdown
+document.getElementById('recommendation-bot').addEventListener('click', function() {
+  const recommendationDropdown = document.getElementById('recommendation-dropdown');
+
+  if (recommendationDropdownVisible) {
+    recommendationDropdown.classList.remove('visible');
+    recommendationDropdown.classList.add('hidden');
+    recommendationDropdownVisible = false;
+  } else {
+    recommendationDropdown.classList.remove('hidden');
+    recommendationDropdown.classList.add('visible');
+    recommendationDropdownVisible = true;
+  }
+});
+
+// Scroll event listener to manage images and sign visibility
+window.addEventListener('scroll', function(e) {
   const scrollPosition = window.scrollY;
   const maxScroll = getScrollHeight();
   const scrollFraction = scrollPosition / maxScroll;
@@ -107,12 +135,12 @@ window.addEventListener('scroll', () => {
     currentImageIndex = imageIndex;
   }
 
+  // Handle the hanging signs based on scroll position
   if (!ticking) {
     window.requestAnimationFrame(function() {
       handleScroll(scrollPosition);
       ticking = false;
     });
-
     ticking = true;
   }
 });
@@ -127,8 +155,15 @@ navbarToggle?.addEventListener('click', () => {
 });
 
 // Auto-typing effect
-var typed = new Typed(".auto-type", {
+var typed1 = new Typed(".auto-type1", {
   strings : ["Talk to RailMitra", "Raise a Complaint"],
+  typeSpeed : 150,
+  backSpeed : 50,
+  loop : true
+});
+
+var typed2 = new Typed(".auto-type2", {
+  strings : ["Talk to YatriAdvisor", "Recommend a train", "Recommend a Movie", "Recommend food"],
   typeSpeed : 150,
   backSpeed : 50,
   loop : true
