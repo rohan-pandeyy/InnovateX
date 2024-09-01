@@ -27,19 +27,27 @@ let lastKnownScrollPosition = 0;
 let ticking = false;
 let complaintDropdownVisible = false;
 let recommendationDropdownVisible = false;
+let feedbackDropdownVisible = false;
 
 function handleScroll(scrollPos) {
   const complaintBot = document.getElementById('complaint-bot');
   const complaintDropdown = document.getElementById('complaint-dropdown');
   const recommendationBot = document.getElementById('recommendation-bot');
   const recommendationDropdown = document.getElementById('recommendation-dropdown');
+  const feedbackBot = document.getElementById('feedback');
+  const feedbackDropdown = document.getElementById('feedback-dropdown');
 
   const triggerPosition1 = 300;  // When the first sign appears
   const triggerPosition2 = 1300; // When the second sign appears
-  const hidePosition1 = 800;     // When first sign should disappear
-  const hidePosition2 = 1900;    // When second sign should disappear
+  const triggerPosition3 = 2400; // When the third sign appears
+
+  const hidePosition1 = 800;     // When the first sign should disappear
+  const hidePosition2 = 1900;    // When the second sign should disappear
+  const hidePosition3 = 3200;    // When the third sign should disappear
+
   const complaintDropdownHidePosition = 300;
   const recommendationDropdownHidePosition = 1000;
+  const feedbackDropdownHidePosition = 1600;
 
   // Handle visibility for complaint signs
   if (scrollPos >= hidePosition1) {
@@ -84,6 +92,28 @@ function handleScroll(scrollPos) {
     recommendationDropdown.classList.add('hidden');
     recommendationDropdownVisible = false;
   }
+
+  // Handle visibility for feedback signs
+  if (scrollPos >= hidePosition3) {
+    feedbackBot.classList.remove('visible');
+    feedbackBot.classList.add('hidden');
+    feedbackDropdown.classList.remove('visible');
+    feedbackDropdown.classList.add('hidden');
+    feedbackDropdownVisible = false;
+  } else if (scrollPos > triggerPosition3) {
+    feedbackBot.classList.remove('hidden');
+    feedbackBot.classList.add('visible');
+    if (feedbackDropdownVisible && scrollPos > feedbackDropdownHidePosition) {
+      feedbackDropdown.classList.remove('hidden');
+      feedbackDropdown.classList.add('visible');
+    }
+  } else {
+    feedbackBot.classList.remove('visible');
+    feedbackBot.classList.add('hidden');
+    feedbackDropdown.classList.remove('visible');
+    feedbackDropdown.classList.add('hidden');
+    feedbackDropdownVisible = false;
+  }
 }
 
 // Event listener for complaint-bot to toggle complaint-dropdown
@@ -113,6 +143,21 @@ document.getElementById('recommendation-bot').addEventListener('click', function
     recommendationDropdown.classList.remove('hidden');
     recommendationDropdown.classList.add('visible');
     recommendationDropdownVisible = true;
+  }
+});
+
+// Event listener for feedback to toggle feedback-dropdown
+document.getElementById('feedback').addEventListener('click', function() {
+  const feedbackDropdown = document.getElementById('feedback-dropdown');
+
+  if (feedbackDropdownVisible) {
+    feedbackDropdown.classList.remove('visible');
+    feedbackDropdown.classList.add('hidden');
+    feedbackDropdownVisible = false;
+  } else {
+    feedbackDropdown.classList.remove('hidden');
+    feedbackDropdown.classList.add('visible');
+    feedbackDropdownVisible = true;
   }
 });
 

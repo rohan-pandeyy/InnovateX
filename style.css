@@ -212,3 +212,67 @@ header nav:hover > a:not(:hover):not(.active) {
     top: 200px;
     opacity: 0;
 }
+
+#feedback {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('./images/board.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 0.5s ease-out, opacity 0.5s ease-out;
+    z-index: 1000;
+    opacity: 0;
+    top: -100px;
+    cursor: pointer;
+}
+
+#feedback.visible {
+    top: 0;
+    opacity: 1;
+}
+
+#feedback.hidden {
+    top: -100px;
+    opacity: 0;
+}
+
+#feedback h1 {
+    color: #000000;
+    font-size: 24px;
+    text-align: center;
+    padding: 20px;
+    margin-top: 130px;
+}
+
+#feedback-dropdown {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('./images/board-dropdown.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 600px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 0.5s ease-out, opacity 0.5s ease-out;
+    z-index: 999;
+    opacity: 0;
+    top: 200px; /* Position it below the first sign (height of the first sign) */
+}
+
+#feedback-dropdown.visible {
+    opacity: 1;
+}
+
+#feedback-dropdown.hidden {
+    top: 200px;
+    opacity: 0;
+}
