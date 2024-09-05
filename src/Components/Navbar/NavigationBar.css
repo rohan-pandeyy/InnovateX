@@ -17,6 +17,13 @@
     font-weight: bold;
     color: white;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    height: 3rem;
+    margin-right: 0.5rem;
 }
 
 .navbar-nav {
