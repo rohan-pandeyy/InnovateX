@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavigationBar.css';
-import logo from '../Assets/logo.png';
-import GovEmblems from '../Assets/GovEmblems.png';
+import logo from '../../Assets/logo.png';
+import GovEmblems from '../../Assets/GovEmblems.png';
 
 
 const Navbar = () => {
