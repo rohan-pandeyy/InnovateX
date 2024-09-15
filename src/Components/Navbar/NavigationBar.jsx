@@ -10,14 +10,17 @@ const Navbar = () => {
             <div className="navbar-brand">
                 <img src={GovEmblems} alt="Emblems" className="navbar-logo" />
                 <img src={logo} alt="YatraBuddy Logo" className="navbar-logo" />
-                YatraBuddy
+                <div className="brand-text">
+                    <span className="brand-name">YatraBuddy</span>
+                    <span className="brand-tagline">For Inquiry, Assistance & Grievance Redressal</span>
+                </div>
             </div>
             <ul className="navbar-nav">
                 <li className="nav-item">
                     <a href="#">Home</a>
                 </li>
                 <li className="nav-item">
-                    <a href="#">About</a>
+                    <a href="#">FAQ</a>
                 </li>
                 <li className="nav-item">
                     <a href="#">Contact</a>

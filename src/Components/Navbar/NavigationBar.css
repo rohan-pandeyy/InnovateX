@@ -13,17 +13,30 @@
 }
 
 .navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .navbar-logo {
     height: 3rem;
     margin-right: 0.5rem;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.brand-tagline {
+    font-size: 0.8rem;
+    color: #ccc;
 }
 
 .navbar-nav {
@@ -45,4 +58,5 @@
 
 .nav-item a:hover {
     color: rgba(255, 255, 255, 0.8);
+    text-decoration: underline;
 }

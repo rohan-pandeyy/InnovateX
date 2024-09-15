@@ -1,8 +1,8 @@
 import React from 'react';
 import LoginForm from './LoginForm';
-import MorphingBackground from './MorphingBackground';
+import MorphingBackground from '../../Components/MorphingBackground/MorphingBackground';
 import './LoginPage.css';
-import Navbar from '../Navbar/NavigationBar';
+import Navbar from '../../Components/Navbar/NavigationBar';
 
 const LoginPage = () => {
     return (
